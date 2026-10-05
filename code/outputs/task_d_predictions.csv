@@ -1,0 +1,96 @@
+query_id,material,condition,predicted_label,is_defective,confidence,evidence,in_vocabulary,prompt,model_version,run_date,raw_response
+Q1,carpet,D1,localized weave distortion/damaged fibers,True,0.98,"A clearly visible abnormal dark, irregular patch appears in the lower-left/center region, where the otherwise regular woven pattern is disrupted and fibers appear bunched, displaced, or damaged.",,"Inspect this surface image. Is anything visibly abnormal? 
+Return only valid JSON withis_defective, defect_name, confidence, and evidence.",GPT-5.6-sol,2026-10-04,"{""is_defective"":true,""defect_name"":""localized weave distortion/damaged fibers"",""confidence"":0.98,""evidence"":""A clearly visible abnormal dark, irregular patch appears in the lower-left/center region, where the otherwise regular woven pattern is disrupted and fibers appear bunched, displaced, or damaged.""}"
+Q2,grid,D1,broken mesh strands,True,0.99,"Multiple clear discontinuities are visible in the repeating mesh pattern, with several strands broken, bent, and displaced around the upper-center, lower-left, and lower-right regions.",,"Inspect this surface image. Is anything visibly abnormal? 
+Return only valid JSON withis_defective, defect_name, confidence, and evidence.",GPT-5.6-sol,2026-10-04,"{""is_defective"":true,""defect_name"":""broken mesh strands"",""confidence"":0.99,""evidence"":""Multiple clear discontinuities are visible in the repeating mesh pattern, with several strands broken, bent, and displaced around the upper-center, lower-left, and lower-right regions.""}"
+Q3,leather,D1,puncture/tear,True,0.99,"A distinct small puncture with a short tear and raised/damaged material is visible slightly left of center, disrupting the otherwise consistent textured surface.",,"Inspect this surface image. Is anything visibly abnormal? 
+Return only valid JSON withis_defective, defect_name, confidence, and evidence.",GPT-5.6-sol,2026-10-04,"{""is_defective"":true,""defect_name"":""puncture/tear"",""confidence"":0.99,""evidence"":""A distinct small puncture with a short tear and raised/damaged material is visible slightly left of center, disrupting the otherwise consistent textured surface.""}"
+Q4,tile,D1,crack,True,0.99,"A prominent Y-shaped dark crack is visible through the center of the surface, with three distinct branches disrupting the surrounding material.",,"Inspect this surface image. Is anything visibly abnormal? 
+Return only valid JSON withis_defective, defect_name, confidence, and evidence.",GPT-5.6-sol,2026-10-04,"{""is_defective"":true,""defect_name"":""crack"",""confidence"":0.99,""evidence"":""A prominent Y-shaped dark crack is visible through the center of the surface, with three distinct branches disrupting the surrounding material.""}"
+Q5,wood,D1,split/crack,True,0.98,"A prominent vertical separation runs nearly the full height slightly right of center, forming an irregular open split that is distinct from the surrounding wood grain.",,"Inspect this surface image. Is anything visibly abnormal? 
+Return only valid JSON withis_defective, defect_name, confidence, and evidence.",GPT-5.6-sol,2026-10-04,"{""is_defective"":true,""defect_name"":""split/crack"",""confidence"":0.98,""evidence"":""A prominent vertical separation runs nearly the full height slightly right of center, forming an irregular open split that is distinct from the surrounding wood grain.""}"
+Q1,carpet,D2,color,True,0.96,A localized dark discolored region is visible slightly left of center in the lower-middle portion of the woven surface.,True,"Inspect this surface image and find if there is among the following :
+- color: A localized region has an abnormal colour or tone.
+- cut: A sharp incision or sliced region interrupts the texture.
+- hole: Material is missing in a compact hole-like region.
+- metal_contamination: A metallic foreign object lies on the surface.
+- thread: A foreign thread lies across the regular texture.
+Only consider a SINGLE label otherwise set defect name to ""good"".
+Return only valid JSON with is_defective, defect_name, confidence, and evidence.",GPT-5.6-sol,2026-10-04,"{""is_defective"":true,""defect_name"":""color"",""confidence"":0.96,""evidence"":""A localized dark discolored region is visible slightly left of center in the lower-middle portion of the woven surface.""}"
+Q2,grid,D2,broken,True,0.99,"Multiple grid strands are visibly interrupted with separated, free-ended segments, especially in the upper-middle, lower-left, and lower-right regions.",True,"Inspect this surface image and find if there is among the following :
+- bent: The regular grid lines are locally warped or displaced.
+- broken: Part of the repeating grid is interrupted or missing.
+- glue: A localized glue deposit changes the surface appearance.
+- metal_contamination: A metallic foreign object lies on the surface.
+- thread: A foreign thread lies across the regular texture.
+Only consider a SINGLE label otherwise set defect name to ""good"".
+Return only valid JSON with is_defective, defect_name, confidence, and evidence.",GPT-5.6-sol,2026-10-04,"{""is_defective"":true,""defect_name"":""broken"",""confidence"":0.99,""evidence"":""Multiple grid strands are visibly interrupted with separated, free-ended segments, especially in the upper-middle, lower-left, and lower-right regions.""}"
+Q3,leather,D2,poke,True,0.97,A small puncture-like opening with localized material disruption is visible slightly left of center.,True,"Inspect this surface image and find if there is among the following :
+- color: A localized region has an abnormal colour or tone.
+- cut: A sharp incision or sliced region interrupts the texture.
+- fold: The surface is creased or folded out of its normal plane.
+- glue: A localized glue deposit changes the surface appearance.
+- poke: A small puncture-like indentation or opening is visible.
+Only consider a SINGLE label otherwise set defect name to ""good"".
+Return only valid JSON with is_defective, defect_name, confidence, and evidence.",GPT-5.6-sol,2026-10-04,"{""is_defective"":true,""defect_name"":""poke"",""confidence"":0.97,""evidence"":""A small puncture-like opening with localized material disruption is visible slightly left of center.""}"
+Q4,tile,D2,crack,True,0.99,A prominent narrow dark fracture branches from the lower center into two diagonal lines extending toward the upper edges.,True,"Inspect this surface image and find if there is among the following :
+- crack: A narrow fracture-like line crosses the material surface.
+- glue_strip: An elongated strip of adhesive lies on the tile.
+- gray_stroke: A grey linear mark appears across the tile.
+- oil: An oily region changes colour or reflectance.
+- rough: A localized patch is visibly rougher than normal.
+Only consider a SINGLE label otherwise set defect name to ""good"".
+Return only valid JSON with is_defective, defect_name, confidence, and evidence.",GPT-5.6-sol,2026-10-04,"{""is_defective"":true,""defect_name"":""crack"",""confidence"":0.99,""evidence"":""A prominent narrow dark fracture branches from the lower center into two diagonal lines extending toward the upper edges.""}"
+Q5,wood,D2,scratch,True,0.98,"A prominent thin vertical abrasion interrupts the wood surface slightly right of center, with exposed lighter material along its edges.",True,"Inspect this surface image and find if there is among the following :
+- color: A localized region has an abnormal colour or tone.
+- combined: More than one defect mechanism appears in the same image.
+- hole: Material is missing in a compact hole-like region.
+- liquid: A liquid stain changes colour or reflectance locally.
+- scratch: A thin elongated abrasion crosses the surface.
+Only consider a SINGLE label otherwise set defect name to ""good"".
+Return only valid JSON with is_defective, defect_name, confidence, and evidence.",GPT-5.6-sol,2026-10-04,"{""is_defective"":true,""defect_name"":""scratch"",""confidence"":0.98,""evidence"":""A prominent thin vertical abrasion interrupts the wood surface slightly right of center, with exposed lighter material along its edges.""}"
+Q1,carpet,D3,color,True,0.96,"A localized dark-toned patch is visible in the lower-left/central region while the woven texture remains structurally intact, closely matching the provided color-defect example.",True,"Inspect this surface image and find if there is among the following :
+- color: A localized region has an abnormal colour or tone.
+- cut: A sharp incision or sliced region interrupts the texture.
+- hole: Material is missing in a compact hole-like region.
+- metal_contamination: A metallic foreign object lies on the surface.
+- thread: A foreign thread lies across the regular texture.
+Only consider a SINGLE label otherwise set defect name to ""good"".
+Return only valid JSON with is_defective, defect_name, confidence, and evidence.
+One of the attached image provides examples for each type of defect, use it to establish the defect type.",GPT-5.6-sol,2026-10-04,"{""is_defective"":true,""defect_name"":""color"",""confidence"":0.96,""evidence"":""A localized dark-toned patch is visible in the lower-left/central region while the woven texture remains structurally intact, closely matching the provided color-defect example.""}"
+Q2,grid,D3,broken,True,0.98,"Several grid strands are visibly interrupted with separated, free-ended segments, closely matching the provided broken-defect example.",True,"Inspect this surface image and find if there is among the following :
+- bent: The regular grid lines are locally warped or displaced.
+- broken: Part of the repeating grid is interrupted or missing.
+- glue: A localized glue deposit changes the surface appearance.
+- metal_contamination: A metallic foreign object lies on the surface.
+- thread: A foreign thread lies across the regular texture.
+Only consider a SINGLE label otherwise set defect name to ""good"".
+Return only valid JSON with is_defective, defect_name, confidence, and evidence.
+One of the attached image provides examples for each type of defect, use it to establish the defect type.",GPT-5.6-sol,2026-10-04,"{""is_defective"":true,""defect_name"":""broken"",""confidence"":0.98,""evidence"":""Several grid strands are visibly interrupted with separated, free-ended segments, closely matching the provided broken-defect example.""}"
+Q3,leather,D3,cut,True,0.96,"A sharp elongated incision with a small opened/damaged endpoint interrupts the leather texture near the lower-left central region, closely matching the provided cut example.",True,"Inspect this surface image and find if there is among the following :
+- color: A localized region has an abnormal colour or tone.
+- cut: A sharp incision or sliced region interrupts the texture.
+- fold: The surface is creased or folded out of its normal plane.
+- glue: A localized glue deposit changes the surface appearance.
+- poke: A small puncture-like indentation or opening is visible.
+Only consider a SINGLE label otherwise set defect name to ""good"".
+Return only valid JSON with is_defective, defect_name, confidence, and evidence.
+One of the attached image provides examples for each type of defect, use it to establish the defect type.",GPT-5.6-sol,2026-10-04,"{""is_defective"":true,""defect_name"":""cut"",""confidence"":0.96,""evidence"":""A sharp elongated incision with a small opened/damaged endpoint interrupts the leather texture near the lower-left central region, closely matching the provided cut example.""}"
+Q4,tile,D3,crack,True,0.99,"Multiple narrow dark fracture-like lines converge near the center and extend across the material surface, closely matching the provided crack example.",True,"Inspect this surface image and find if there is among the following :
+- crack: A narrow fracture-like line crosses the material surface.
+- glue_strip: An elongated strip of adhesive lies on the tile.
+- gray_stroke: A grey linear mark appears across the tile.
+- oil: An oily region changes colour or reflectance.
+- rough: A localized patch is visibly rougher than normal.
+Only consider a SINGLE label otherwise set defect name to ""good"".
+Return only valid JSON with is_defective, defect_name, confidence, and evidence.
+One of the attached image provides examples for each type of defect, use it to establish the defect type.",GPT-5.6-sol,2026-10-04,"{""is_defective"":true,""defect_name"":""crack"",""confidence"":0.99,""evidence"":""Multiple narrow dark fracture-like lines converge near the center and extend across the material surface, closely matching the provided crack example.""}"
+Q5,wood,D3,good,False,0.97,"The surface shows normal longitudinal wood grain and a natural seam-like boundary, with no localized abnormal color, compact hole, liquid stain, thin abrasion, or combination of the provided defect types.",True,"Inspect this surface image and find if there is among the following :
+- color: A localized region has an abnormal colour or tone.
+- combined: More than one defect mechanism appears in the same image.
+- hole: Material is missing in a compact hole-like region.
+- liquid: A liquid stain changes colour or reflectance locally.
+- scratch: A thin elongated abrasion crosses the surface.
+Only consider a SINGLE label otherwise set defect name to ""good"".
+Return only valid JSON with is_defective, defect_name, confidence, and evidence.
+One of the attached image provides examples for each type of defect, use it to establish the defect type.",GPT-5.6-sol,2026-10-04,"{""is_defective"":false,""defect_name"":""good"",""confidence"":0.97,""evidence"":""The surface shows normal longitudinal wood grain and a natural seam-like boundary, with no localized abnormal color, compact hole, liquid stain, thin abrasion, or combination of the provided defect types.""}"
