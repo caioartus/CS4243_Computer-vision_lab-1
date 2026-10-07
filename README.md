@@ -14,12 +14,12 @@ Next we want to be able to correlate these filters with an image and compute the
 
 **Frequency impact**
 A higher frequency means the filter responds to stripes that are closer together. By combining filters of different frequencies we can detect stripes with different spacings. Figure 1 shows this on a synthetic example. Notice how a Gabor filter of a certain frequency only matches lines with the same frequency.
-<p align="center"><img src="student_files/report/synth_freq.png" width="80%" alt="Synthetic example showing the effect of frequency in the Gabor filter."><br><em><strong>Figure 1.</strong> Synthetic example showing the effect of frequency in the Gabor filter.</em></p>
+<p align="center"><img src="code/student_files/report/synth_freq.png" width="80%" alt="Synthetic example showing the effect of frequency in the Gabor filter."><br><em><strong>Figure 1.</strong> Synthetic example showing the effect of frequency in the Gabor filter.</em></p>
 
 **Orientation Impact**
 Orientation changes which direction the pattern must have to cause a high response. For example an orientation of 0 means the filter responds highly to completely vertical lines, whereas an orientation of $\frac{\pi}{2}$ means the filter responds to completely horizontal lines. The synthetic example in Figure 2 shows this in action: the Gabor filters only match the patterns with the correct orientation.
 
-<p align="center"><img src="student_files/report/synth_orientation.png" width="80%" alt="Synthetic example showing the effect of orientation in the Gabor filter."><br><em><strong>Figure 2.</strong> Synthetic example showing the effect of orientation in the Gabor filter.</em></p>
+<p align="center"><img src="code/student_files/report/synth_orientation.png" width="80%" alt="Synthetic example showing the effect of orientation in the Gabor filter."><br><em><strong>Figure 2.</strong> Synthetic example showing the effect of orientation in the Gabor filter.</em></p>
 
 **Phase impact**
 
@@ -27,7 +27,7 @@ Phase shifts the sinusoidal stripes inside the fixed Gaussian envelope without a
 
 The synthetic example in Figure 3 illustrates this behaviour as both symmetric and antisymmetric filters process a uniform band and a sharp step edge. The antisymmetric filter produces dual peak responses aligned with the boundaries, whereas the symmetric filter produces a single peak centered directly over the band itself.
 
-<p align="center"><img src="student_files/report/synth_phase.png" width="55%" alt="Synthetic example showing the effect of phase in a Gabor filter (symmetric vs antisymmetric) on a uniform band and a step edge."><br><em><strong>Figure 3.</strong> Synthetic example showing the effect of phase in a Gabor filter (symmetric vs antisymmetric) on a uniform band and a step edge.</em></p>
+<p align="center"><img src="code/student_files/report/synth_phase.png" width="55%" alt="Synthetic example showing the effect of phase in a Gabor filter (symmetric vs antisymmetric) on a uniform band and a step edge."><br><em><strong>Figure 3.</strong> Synthetic example showing the effect of phase in a Gabor filter (symmetric vs antisymmetric) on a uniform band and a step edge.</em></p>
 
 **Pooling size impact**
 
@@ -36,12 +36,12 @@ Pooling size affects the size of the regions we are considering. With a small po
 For example, consider a wood training image, which has no defects. We expect a relatively smooth response, as the pattern repeats with perhaps some mild variations due to the way the frequency of the stripes changes in the wood. Figure 4 shows the result of varying the pooling size from 3 to 21 when applying a vertical Gabor filter that matches the stripes of the wood. With pooling size 3 we notice stripes in the responses of this vertical filter due to the filter's peaks and troughs. With a larger pooling size these cancel out leaving only the pattern response.
 
 
-<p align="center"><img src="student_files/report/pooling_stability.png" width="80%" alt="Increasing the pooling size decreases instability."><br><em><strong>Figure 4.</strong> Increasing the pooling size decreases instability.</em></p>
+<p align="center"><img src="code/student_files/report/pooling_stability.png" width="80%" alt="Increasing the pooling size decreases instability."><br><em><strong>Figure 4.</strong> Increasing the pooling size decreases instability.</em></p>
 
 However, Figure 5 shows what happens if we have a small detail we would like to preserve. In this case we choose an image of wood with a defect (holes) and apply a vertical Gabor filter. When pooling becomes too large the peaks in response caused by the smaller holes get smoothed over and confounded with the background texture response.
 
 
-<p align="center"><img src="student_files/report/pooling_defect.png" width="80%" alt="Too large a pooling size can cause small details to get lost. Here the small holes near the bottom are smoothed over and lost in the larger pooling sizes."><br><em><strong>Figure 5.</strong> Too large a pooling size can cause small details to get lost. Here the small holes near the bottom are smoothed over and lost in the larger pooling sizes.</em></p>
+<p align="center"><img src="code/student_files/report/pooling_defect.png" width="80%" alt="Too large a pooling size can cause small details to get lost. Here the small holes near the bottom are smoothed over and lost in the larger pooling sizes."><br><em><strong>Figure 5.</strong> Too large a pooling size can cause small details to get lost. Here the small holes near the bottom are smoothed over and lost in the larger pooling sizes.</em></p>
 
 ## Edge Implementation
 
@@ -89,19 +89,19 @@ Nearest direction NMS may fail to accurately detect slanted edges or curves beca
 
 As an example, Figure 6 shows what happens on a grid image where there are lots of curved edges as each cell of the grid looks like a kind of ellipse. We notice that both methods tend to agree on the vertical edges but the nearest-direction approximation either breaks up or completely ignores curved edges, whereas the interpolated version does a good job at keeping them. 
 
-<p align="center"><img src="student_files/report/q2_nms_grid.png" width="55%" alt="Interpolated vs nearest-direction non-maximum suppression on a grid image."><br><em><strong>Figure 6.</strong> Interpolated vs nearest-direction non-maximum suppression on a grid image.</em></p>
+<p align="center"><img src="code/student_files/report/q2_nms_grid.png" width="55%" alt="Interpolated vs nearest-direction non-maximum suppression on a grid image."><br><em><strong>Figure 6.</strong> Interpolated vs nearest-direction non-maximum suppression on a grid image.</em></p>
 
 
 If we look at the histogram of the magnitudes of the positive responses (Figure 7), we see again that the interpolated version keeps many more of the pixels. Figure 7 also shows another agreement map where we see that the edges missing from the nearest-direction approximation are mostly slanted edges. Interestingly, some edges are also present in the nearest-direction approximation but not in the interpolated version. These are mostly also artefacts of the discrete approximation. 
 
-<p align="center"><img src="student_files/report/q2_nms_grid_hist.png" width="75%" alt="Interpolated vs nearest-direction non-maximum suppression: histogram of positive response magnitudes and agreement between the two methods."><br><em><strong>Figure 7.</strong> Interpolated vs nearest-direction non-maximum suppression: histogram of positive response magnitudes and agreement between the two methods.</em></p>
+<p align="center"><img src="code/student_files/report/q2_nms_grid_hist.png" width="75%" alt="Interpolated vs nearest-direction non-maximum suppression: histogram of positive response magnitudes and agreement between the two methods."><br><em><strong>Figure 7.</strong> Interpolated vs nearest-direction non-maximum suppression: histogram of positive response magnitudes and agreement between the two methods.</em></p>
 
 
 **4 vs 8 connectivity**
 
 Connectivity has an impact on what edges are kept in the final edge map. 4 connectivity tends to keep fewer edges, losing or breaking up slanted edges especially, as they tend to be connected via diagonal pixels. Figure 8 shows this on an image of wood where there are many slanted edges. We notice that the 4-connectivity fails to capture a lot of these slanted edges and focuses only on the mostly vertical ones.
 
-<p align="center"><img src="student_files/report/q2_connectivity.png" width="85%" alt="Effect of connectivity on the edge map for a wood image."><br><em><strong>Figure 8.</strong> Effect of connectivity on the edge map for a wood image.</em></p>
+<p align="center"><img src="code/student_files/report/q2_connectivity.png" width="85%" alt="Effect of connectivity on the edge map for a wood image."><br><em><strong>Figure 8.</strong> Effect of connectivity on the edge map for a wood image.</em></p>
 
 
 
@@ -141,7 +141,7 @@ $$
 
 Figure 9 shows the scale disparities across feature families: while Colour (RGB) features have both a high mean and high variance because of uncentered pixel intensities over a wide dynamic range, Edge features keep a low overall mean with high variance due to sparse boundary spikes, and Gabor features stay low in both mean and variance from zero-mean filtering and spatial pooling. Left unstandardized, these scale differences allow high-magnitude or high-variance features to dominate distance metrics and gradient updates, while causing regularization to penalize model weights unevenly. Standardizing all features to zero mean and unit variance ensures every feature family contributes equitably, making the optimization landscape much better suited for downstream classification.
 
-<p align="center"><img src="student_files/report/q3_scale.png" width="70%" alt="Mean and standard deviation of the features, by feature family."><br><em><strong>Figure 9.</strong> Mean and standard deviation of the features, by feature family.</em></p>
+<p align="center"><img src="code/student_files/report/q3_scale.png" width="70%" alt="Mean and standard deviation of the features, by feature family."><br><em><strong>Figure 9.</strong> Mean and standard deviation of the features, by feature family.</em></p>
 
 Note that this figure was produced with the default Gabor bank from `config.py` (3 frequencies: 0.08, 0.16 and 0.28, times 4 orientations, so 12 Gabor channels), whereas the pipeline used everywhere else has 4 Gabor channels. The conclusion about the scale differences between feature families is the same.
 
@@ -155,7 +155,7 @@ We can visualise the first two principal components of our features in order to 
 
 **Note:** The "wood" class only has 9 good images in the test split (the even/odd split of the 19 good wood images leaves 9 in test), instead of 10. This shouldn't change the analysis drastically but is important to note.
 
-<p align="center"><img src="student_files/report/material_PCA.png" width="50%" alt="PCA projection of all the material features onto the first two principal components."><br><em><strong>Figure 10.</strong> PCA projection of all the material features onto the first two principal components.</em></p>
+<p align="center"><img src="code/student_files/report/material_PCA.png" width="50%" alt="PCA projection of all the material features onto the first two principal components."><br><em><strong>Figure 10.</strong> PCA projection of all the material features onto the first two principal components.</em></p>
 
 
 To fit our data, we use the supplied `fit_material_classifier` function which builds a pipeline that scales the data using `StandardScaler` and fits a multiclass logistic regression (with regularisation $C = 5$). 
@@ -236,12 +236,12 @@ We report the following accuracy and macro F1 scores on the test set:
 
 To further investigate these scores we can look at the confusion matrix where each cell $C_{i,j}$ is the number of examples of the $i$-th class predicted as $j$-th class (the diagonal are the correct predictions). Figure 11 shows this confusion matrix. We notice a total of 5 misclassifications : 2 grid predicted as carpet, 2 grid predicted as tile, 1 leather predicted as carpet. Grid is clearly the most misclassified class.
 
-<p align="center"><img src="student_files/report/material_conf_mat.png" width="40%" alt="Material classifier confusion matrix on the test set."><br><em><strong>Figure 11.</strong> Material classifier confusion matrix on the test set.</em></p>
+<p align="center"><img src="code/student_files/report/material_conf_mat.png" width="40%" alt="Material classifier confusion matrix on the test set."><br><em><strong>Figure 11.</strong> Material classifier confusion matrix on the test set.</em></p>
 
 
 Figure 12 shows the confidence histogram (left) and the reliability diagram (right). The confidence histogram shows that the model is generally confident, with most predictions falling in the 0.8 to 1.0 bins. The reliability diagram groups predictions into confidence bins and compares the mean confidence of each bin with the actual accuracy in that bin (marker size is the number of predictions). A perfectly calibrated model would have all points on the diagonal of this plot. Most predictions are in the upper right (high confidence and accurate predictions), with a few bins under the diagonal (overconfident) and some over the diagonal (underconfident). 
 
-<p align="center"><img src="student_files/report/confhist_material.png" width="75%" alt="Confidence histogram and reliability diagram of the material classifier on the test data."><br><em><strong>Figure 12.</strong> Confidence histogram and reliability diagram of the material classifier on the test data.</em></p>
+<p align="center"><img src="code/student_files/report/confhist_material.png" width="75%" alt="Confidence histogram and reliability diagram of the material classifier on the test data."><br><em><strong>Figure 12.</strong> Confidence histogram and reliability diagram of the material classifier on the test data.</em></p>
 
 
 Let's analyse two of the errors more closely to understand why they happened. 
@@ -286,7 +286,7 @@ Figure 13 shows these values for this first misclassification. We see that the b
 - Global edge density
 
 
-<p align="center"><img src="student_files/report/err1_feat.png" width="85%" alt="Error 1 (grid predicted as carpet): feature contributions."><br><em><strong>Figure 13.</strong> Error 1 (grid predicted as carpet): feature contributions.</em></p>
+<p align="center"><img src="code/student_files/report/err1_feat.png" width="85%" alt="Error 1 (grid predicted as carpet): feature contributions."><br><em><strong>Figure 13.</strong> Error 1 (grid predicted as carpet): feature contributions.</em></p>
 
 We can now compare the most impactful feature maps of the misclassified example with the feature maps of the nearest well-classified examples of both the misattributed class (carpet) and the true class (grid), shown in Figure 14. Because the logistic regression classifier operates on channel-wise summary statistics (such as mean, std, and p90), its prediction depends directly on the overall activation magnitudes in feature space.
 
@@ -294,7 +294,7 @@ The most striking visual difference is in the vertical Gabor filter (`#2: gabor_
 
 We hypothesize that the main cause of this misclassification is the **rotation** of the grid. Because Gabor filters and orientation-specific edge features are not invariant to in-plane rotations, rotating the grid alters which channels trigger, depressing the vertical Gabor response while inflating non-target edge channels.
 
-<p align="center"><img src="student_files/report/err1_featmap.png" width="35%" alt="Error 1 (grid predicted as carpet): feature map analysis."><br><em><strong>Figure 14.</strong> Error 1 (grid predicted as carpet): feature map analysis.</em></p>
+<p align="center"><img src="code/student_files/report/err1_featmap.png" width="35%" alt="Error 1 (grid predicted as carpet): feature map analysis."><br><em><strong>Figure 14.</strong> Error 1 (grid predicted as carpet): feature map analysis.</em></p>
 
 
 **Error 2: Grid predicted as tile**
@@ -303,12 +303,12 @@ We compute the same figures for another mistake where the model predicted a grid
 
 Figure 15 shows that in this case it is the edge features (global edge density and densities in orientations 2 and 3) that are mainly contributing to this misclassification.
 
-<p align="center"><img src="student_files/report/err2_feat.png" width="85%" alt="Error 2 (grid predicted as tile): feature contributions."><br><em><strong>Figure 15.</strong> Error 2 (grid predicted as tile): feature contributions.</em></p>
+<p align="center"><img src="code/student_files/report/err2_feat.png" width="85%" alt="Error 2 (grid predicted as tile): feature contributions."><br><em><strong>Figure 15.</strong> Error 2 (grid predicted as tile): feature contributions.</em></p>
 
 
 In Figure 16 we can see that the results are not as clear cut as in the previous error and it is difficult to understand why this was a mistake, especially considering the similarity of the images with the correctly classified grid. However, we can still see that the edge channels have much stronger activations in the mistake example than on the correctly classified one, which brings it closer to a tile prediction.
 
-<p align="center"><img src="student_files/report/err2_featmap.png" width="35%" alt="Error 2 (grid predicted as tile): feature map analysis."><br><em><strong>Figure 16.</strong> Error 2 (grid predicted as tile): feature map analysis.</em></p>
+<p align="center"><img src="code/student_files/report/err2_featmap.png" width="35%" alt="Error 2 (grid predicted as tile): feature map analysis."><br><em><strong>Figure 16.</strong> Error 2 (grid predicted as tile): feature map analysis.</em></p>
 
 
 
@@ -316,17 +316,17 @@ In Figure 16 we can see that the results are not as clear cut as in the previous
 
 Figure 17 shows accuracy on normal versus on defective images for each material class. The impact of defects seems to be minimal, and overall the model is actually more accurate on defective images (0.98) than on normal ones (0.92). This is mainly due to the grid class, which surprisingly gets 10/10 defective images right but only 6/10 good ones. These results are computed on a very small amount of data (10 images per bar), so they have to be taken with a grain of salt.
 
-<p align="center"><img src="student_files/report/norm_vs_defect.png" width="50%" alt="Accuracy of the material classifier on normal vs defective images, per material."><br><em><strong>Figure 17.</strong> Accuracy of the material classifier on normal vs defective images, per material.</em></p>
+<p align="center"><img src="code/student_files/report/norm_vs_defect.png" width="50%" alt="Accuracy of the material classifier on normal vs defective images, per material."><br><em><strong>Figure 17.</strong> Accuracy of the material classifier on normal vs defective images, per material.</em></p>
 
 
 Nevertheless, the model is slightly less accurate on defective leather images (9/10) due to a single error, which we investigate below.
 
 Again, we plot the feature contributions and relevant feature maps (Figures 18 and 19) to understand why the model is wrong. However, the results are inconclusive, and it seems that factors independent of the defect (general colour, edges all over the image,...) are at play instead of a defect specific issue. 
 
-<p align="center"><img src="student_files/report/leather_defect.png" width="85%" alt="Feature contributions for the misclassified defective leather image."><br><em><strong>Figure 18.</strong> Feature contributions for the misclassified defective leather image.</em></p>
+<p align="center"><img src="code/student_files/report/leather_defect.png" width="85%" alt="Feature contributions for the misclassified defective leather image."><br><em><strong>Figure 18.</strong> Feature contributions for the misclassified defective leather image.</em></p>
 
 Looking further at the specific feature maps causing the errors, it is again difficult to see the contribution of the defect to this misclassification.
-<p align="center"><img src="student_files/report/leather_defect_featmap.png" width="45%" alt="Feature maps of the misclassified defective leather image."><br><em><strong>Figure 19.</strong> Feature maps of the misclassified defective leather image.</em></p>
+<p align="center"><img src="code/student_files/report/leather_defect_featmap.png" width="45%" alt="Feature maps of the misclassified defective leather image."><br><em><strong>Figure 19.</strong> Feature maps of the misclassified defective leather image.</em></p>
 
 
 ### Task B results : Normality Model
@@ -336,7 +336,7 @@ After fitting one normal model per material on all of its (defect-free) training
 
 Figure 20 shows a histogram of the scores of good pixels and defect pixels as different distributions, as well as the threshold as a dashed line. Orange areas before the threshold indicate false negatives, whereas blue areas after the threshold indicate false positives. The log scale accentuates the long tail, but we do see that the separation between classes is very poor and a lot of validation error still remains.
 
-<p align="center"><img src="student_files/report/val_thresh_hist.png" width="60%" alt="Histogram of the scores of good and defect pixels on the validation set, with the tuned threshold (dashed line)."><br><em><strong>Figure 20.</strong> Histogram of the scores of good and defect pixels on the validation set, with the tuned threshold (dashed line).</em></p>
+<p align="center"><img src="code/student_files/report/val_thresh_hist.png" width="60%" alt="Histogram of the scores of good and defect pixels on the validation set, with the tuned threshold (dashed line)."><br><em><strong>Figure 20.</strong> Histogram of the scores of good and defect pixels on the validation set, with the tuned threshold (dashed line).</em></p>
 
 We then freeze the best model based on validation data, and apply it to the test data to report the performance.
 
@@ -370,7 +370,7 @@ First, on the global score, we notice that the AUROC is only moderately above ra
 
 Figure 21 visualises the F1-score per defect class. 
 
-<p align="center"><img src="student_files/report/f1_defect_class.png" width="65%" alt="Pixel-wise F1 score per defect class."><br><em><strong>Figure 21.</strong> Pixel-wise F1 score per defect class.</em></p>
+<p align="center"><img src="code/student_files/report/f1_defect_class.png" width="65%" alt="Pixel-wise F1 score per defect class."><br><em><strong>Figure 21.</strong> Pixel-wise F1 score per defect class.</em></p>
 
 We notice that the classes the model performs best on are those that constitute defects which form diffuse "blobs" such as liquid, colour and glue, whereas it struggles much more on defects such as scratch or crack which form thin, irregular connected edges (although the scratch results are noisy, see the full-data comparison below). We can hypothesise this is in part linked to the fact we pool pixel scores, meaning things like cracks and scratches which affect narrow areas get averaged out, or on the contrary the size of the defect is greatly overestimated.
 
@@ -382,13 +382,13 @@ Figure 22 shows examples of this:
 - The middle panel shows how a small fold can be greatly overestimated due to pooling.
 - The lower panel shows a worst case scenario where the defect is small at any given point (crack) and the material is very irregular (tile), leading the model to fail to detect any defect at all.
 
-<p align="center"><img src="student_files/report/defect_seg_examples.png" width="50%" alt="Some results of the normality model on test examples."><br><em><strong>Figure 22.</strong> Some results of the normality model on test examples.</em></p>
+<p align="center"><img src="code/student_files/report/defect_seg_examples.png" width="50%" alt="Some results of the normality model on test examples."><br><em><strong>Figure 22.</strong> Some results of the normality model on test examples.</em></p>
 
 ### Question 5: Border failure and threshold impact
 
 The border exclusion we use (the outer pixels are ignored) is important to prevent artefacts from cross correlation and pooling, which are unreliable near the image edges. However, it also means we are unable to detect defects near the borders, and our masks cut off there too. The example in Figure 23 illustrates this: notice how the mask gets sharply cut off due to the border exclusion, even though those pixel scores were high.
 
-<p align="center"><img src="student_files/report/border_failure.png" width="85%" alt="Example of the border exclusion causing an early cutoff of a defect."><br><em><strong>Figure 23.</strong> Example of the border exclusion causing an early cutoff of a defect.</em></p>
+<p align="center"><img src="code/student_files/report/border_failure.png" width="85%" alt="Example of the border exclusion causing an early cutoff of a defect."><br><em><strong>Figure 23.</strong> Example of the border exclusion causing an early cutoff of a defect.</em></p>
 
 Assuming the aggregation percentile is the percentile used to define the whole image score, increasing it would mean that image scores increase or stay the same, as the score moves closer to the maximum pixel score. This makes the image score more sensitive to small defects, but also to isolated noisy pixels in good images. The mask is computed separately, so it would not change. The AUROC is computed over all thresholds, but it could still change, since images do not all increase by the same amount and their ranking can change.
 
@@ -407,7 +407,7 @@ Overall, the Gabor-only branch performs the worst and the edge-only branch alrea
 
 The overall F1 hides clear differences between defect types. Although the branches use different feature channels, each one produces a single anomaly score per pixel, so their maps can be compared on the same images. In Figure 24, each map is divided by its branch's threshold so they share one colour scale.
 
-<p align="center"><img src="student_files/report/ablation_maps.png" width="75%" alt="Gabor-only, edge-only and combined anomaly maps on three wood test images, normalised by each branch's threshold, with the predicted masks outlined."><br><em><strong>Figure 24.</strong> Gabor-only, edge-only and combined anomaly maps on the same test images. Each map is divided by its branch's threshold (1 = threshold), and the predicted mask is outlined in cyan.</em></p>
+<p align="center"><img src="code/student_files/report/ablation_maps.png" width="75%" alt="Gabor-only, edge-only and combined anomaly maps on three wood test images, normalised by each branch's threshold, with the predicted masks outlined."><br><em><strong>Figure 24.</strong> Gabor-only, edge-only and combined anomaly maps on the same test images. Each map is divided by its branch's threshold (1 = threshold), and the predicted mask is outlined in cyan.</em></p>
 
 - **Edge only** is the best branch on the largest number of defect types (colour, cut, fold, glue, poke), and by far on colour defects (F1 0.57, against 0.22 for Gabor only and 0.38 combined). The stains have sharp borders, so they create edges. In the wood colour example, the edge-only masks have the right size, while the Gabor and combined masks are greatly oversized.
 - **Gabor only** is the only branch that detects scratches (0.35 against 0 for both others) and the thin tile marks (glue_strip, gray_stroke). Combining dilutes this signal: the combined score averages over all 13 channels, so a response in a few Gabor channels falls below the threshold (wood scratch row).
@@ -436,7 +436,7 @@ To see how much our conclusions depend on this, we repeat the same pipeline on t
 | 2 per group (reported above) | 3.553 | 0.175 | 0.096 | 0.690 |
 | Full validation and test | 3.402 | 0.168 | 0.092 | 0.662 |
 
-<p align="center"><img src="student_files/report/full_data_comparison.png" width="95%" alt="Full-data Task A confusion matrix and Task B pixel F1 per defect type for the subset and the full test split."><br><em><strong>Figure 25.</strong> Left: Task A confusion matrix with the classifier trained on all training images and evaluated on the full test split. Right: Task B test pixel F1 per defect type, on the 2-per-group subset and on the full test split.</em></p>
+<p align="center"><img src="code/student_files/report/full_data_comparison.png" width="95%" alt="Full-data Task A confusion matrix and Task B pixel F1 per defect type for the subset and the full test split."><br><em><strong>Figure 25.</strong> Left: Task A confusion matrix with the classifier trained on all training images and evaluated on the full test split. Right: Task B test pixel F1 per defect type, on the 2-per-group subset and on the full test split.</em></p>
 
 **Task A.** The model trained on 20 images keeps roughly the same accuracy on the full test split (0.940 instead of 0.949), so our subset results were representative of that model. Training on all 1266 images, however, makes every one of the 248 test images correct. All the errors analysed above therefore come from the tiny training set rather than from a limit of the descriptor. With 4 images per material, a rotated grid or a darker leather sample is simply outside what the classifier has seen, while the full training set covers enough of this variation. The difference between good and defective images (Question 4) also disappears, which confirms that it was noise rather than an effect of the defects. Note that 5 well-separated MVTec materials captured under one controlled setup make this an easy problem. The personal photos show that this does not carry over to different capture conditions, and they were classified with the 20-image model.
 
@@ -452,7 +452,7 @@ We then apply 2 component PCA to visualise our data in two dimensions. We fit th
 
 Figure 26 shows both the un-standardised and standardised PCA projections of the training data. As we can see, the classes are not well separated in the projection, suggesting they may be difficult to separate linearly.
 
-<p align="center"><img src="student_files/report/dtd_pca.png" width="80%" alt="PCA projection of the DTD training and validation examples, with non-standardised and standardised features."><br><em><strong>Figure 26.</strong> PCA projection of the DTD training and validation examples, with non-standardised and standardised features.</em></p>
+<p align="center"><img src="code/student_files/report/dtd_pca.png" width="80%" alt="PCA projection of the DTD training and validation examples, with non-standardised and standardised features."><br><em><strong>Figure 26.</strong> PCA projection of the DTD training and validation examples, with non-standardised and standardised features.</em></p>
 
 We then fit a one-vs-rest classifier on the training data and evaluate it on the validation set. We report two metrics on the validation set:
 - **Average Precision (AP)**: the area under the precision-recall curve for one attribute. It measures how well the model ranks positive images above negative ones, independently of any threshold. A random model gets an AP equal to the proportion of positives (here around 0.08 to 0.13).
@@ -477,7 +477,7 @@ We then fit a one-vs-rest classifier on the training data and evaluate it on the
 
 Figure 27 summarises performance per attribute: 
 
-<p align="center"><img src="student_files/report/dtd_per_attr.png" width="85%" alt="Per-attribute performance of the attribute model on the DTD validation set."><br><em><strong>Figure 27.</strong> Per-attribute performance of the attribute model on the DTD validation set.</em></p>
+<p align="center"><img src="code/student_files/report/dtd_per_attr.png" width="85%" alt="Per-attribute performance of the attribute model on the DTD validation set."><br><em><strong>Figure 27.</strong> Per-attribute performance of the attribute model on the DTD validation set.</em></p>
 
 We notice that the attributes the model handles best are striped, banded, woven and grid, which are all defined by a regular orientation or repetition. This is exactly what our Gabor filters (two fixed frequencies at 0° and 90°) and orientation-specific edge densities measure, so the mapping from features to attribute works well here. On the other hand, attributes such as pitted, porous, cracked or fibrous are close to chance level. These are described by irregular small-scale structure or 3D relief, which our global descriptor (pooled statistics over a 64×64 image) does not capture well: the spatial arrangement is lost by pooling, and the fine detail is lost by resizing. Blotchy, stained and marbled sit in between, probably because they rely partly on colour variations, which our RGB channels do capture to some degree.
 
@@ -485,7 +485,7 @@ The F1 scores are much lower than the AP, and many are exactly 0. This is becaus
 
 Figure 28 shows the probability heatmap, where each row is a validation example and each column is an attribute. The cells correspond to the predicted probabilities for a given example and a given class. The red squares are the true attributes of the examples.
 
-<p align="center"><img src="student_files/report/proba_heatmap.png" width="55%" alt="Predicted probability heatmap for the DTD validation examples (rows) and attributes (columns)."><br><em><strong>Figure 28.</strong> Predicted probability heatmap for the DTD validation examples (rows) and attributes (columns).</em></p>
+<p align="center"><img src="code/student_files/report/proba_heatmap.png" width="55%" alt="Predicted probability heatmap for the DTD validation examples (rows) and attributes (columns)."><br><em><strong>Figure 28.</strong> Predicted probability heatmap for the DTD validation examples (rows) and attributes (columns).</em></p>
 
 We notice that the probabilities are low overall, with only four cells reaching 0.5, which explains the low F1 scores at the 0.5 threshold. The model only gives its highest probability to the correct attribute for a few examples (banded, blotchy, grid and woven), which are mostly the regular, oriented textures we identified before. When it is wrong, the confusions are often understandable: the braided example is predicted as cracked, the bumpy example (a pattern of blocks with strong straight edges) as banded, and the marbled example as woven. The striped example is a good illustration of the limits of our features: its stripes are curved and diagonal, so they do not match our Gabor filters at 0° and 90°, and the model predicts stained instead with 0.50. Finally, some examples have several true attributes (banded is also striped, woven is also grid), and the model generally only picks up one of them.
 
@@ -573,7 +573,7 @@ In D1 only one out of five answers is in the vocabulary, but this is expected. I
 
 We use the labels in the solution (`solution/task_d_answer_key.csv`) to compare to the output of the VLM after the answers were frozen.  For D1, since it doesn't predict exact labels by design, we only report defect presence prediction. Figure 29 shows the result. 
 
-<p align="center"><img src="student_files/report/vlm_conf.png" width="45%" alt="VLM confidence for correct and incorrect predictions, by condition."><br><em><strong>Figure 29.</strong> VLM confidence for correct and incorrect predictions, by condition. [AI-VISION] [HUMAN-CHECK]</em></p>
+<p align="center"><img src="code/student_files/report/vlm_conf.png" width="45%" alt="VLM confidence for correct and incorrect predictions, by condition."><br><em><strong>Figure 29.</strong> VLM confidence for correct and incorrect predictions, by condition. [AI-VISION] [HUMAN-CHECK]</em></p>
 
 In terms of accuracy per condition, D1 correctly flags all 5 queries as defective (5/5 defect presence, exact labels are not scored), D2 gets 4/5 exact labels (Q3 leather is predicted as poke instead of cut), and D3 also gets 4/5 exact labels (Q5 wood is predicted as good instead of scratch). 
 
@@ -613,53 +613,53 @@ We group the passports by how similar they look to the MVTec training images. Th
 
 **Close to training examples (Figure 30):**
 
-<p align="center"><img src="student_files/report/passports/wood_pale.png" width="90%" alt="Texture Passport of wood pale"><br><small><strong>(a)</strong> wood pale</small><br>
-<img src="student_files/report/passports/wood.png" width="90%" alt="Texture Passport of wood"><br><small><strong>(b)</strong> wood</small><br>
-<img src="student_files/report/passports/grid_round_close.png" width="90%" alt="Texture Passport of grid round close"><br><small><strong>(c)</strong> grid round close</small><br>
-<img src="student_files/report/passports/tile_white_defect.png" width="90%" alt="Texture Passport of tile white defect"><br><small><strong>(d)</strong> tile white defect</small><br>
-<img src="student_files/report/passports/tile_white_hole.png" width="90%" alt="Texture Passport of tile white hole"><br><small><strong>(e)</strong> tile white hole</small><br>
-<img src="student_files/report/passports/tile_granite.png" width="90%" alt="Texture Passport of tile granite"><br><small><strong>(f)</strong> tile granite</small><br>
+<p align="center"><img src="code/student_files/report/passports/wood_pale.png" width="90%" alt="Texture Passport of wood pale"><br><small><strong>(a)</strong> wood pale</small><br>
+<img src="code/student_files/report/passports/wood.png" width="90%" alt="Texture Passport of wood"><br><small><strong>(b)</strong> wood</small><br>
+<img src="code/student_files/report/passports/grid_round_close.png" width="90%" alt="Texture Passport of grid round close"><br><small><strong>(c)</strong> grid round close</small><br>
+<img src="code/student_files/report/passports/tile_white_defect.png" width="90%" alt="Texture Passport of tile white defect"><br><small><strong>(d)</strong> tile white defect</small><br>
+<img src="code/student_files/report/passports/tile_white_hole.png" width="90%" alt="Texture Passport of tile white hole"><br><small><strong>(e)</strong> tile white hole</small><br>
+<img src="code/student_files/report/passports/tile_granite.png" width="90%" alt="Texture Passport of tile granite"><br><small><strong>(f)</strong> tile granite</small><br>
 <em><strong>Figure 30.</strong> Texture Passports of the photos judged close to the training examples: (a) wood pale, (b) wood, (c) grid round close, (d) tile white defect, (e) tile white hole, (f) tile granite.</em></p>
 
 **Further from training examples (Figure 31):**
 
-<p align="center"><img src="student_files/report/passports/grid_round_far.png" width="90%" alt="Texture Passport of grid round far"><br><small><strong>(a)</strong> grid round far</small><br>
-<img src="student_files/report/passports/grid_square.png" width="90%" alt="Texture Passport of grid square"><br><small><strong>(b)</strong> grid square</small><br>
-<img src="student_files/report/passports/tile_black.png" width="90%" alt="Texture Passport of tile black"><br><small><strong>(c)</strong> tile black</small><br>
-<img src="student_files/report/passports/wood_bad_light.png" width="90%" alt="Texture Passport of wood bad light"><br><small><strong>(d)</strong> wood bad light</small><br>
-<img src="student_files/report/passports/tile_granite_tilted.png" width="90%" alt="Texture Passport of tile granite tilted"><br><small><strong>(e)</strong> tile granite tilted</small><br>
+<p align="center"><img src="code/student_files/report/passports/grid_round_far.png" width="90%" alt="Texture Passport of grid round far"><br><small><strong>(a)</strong> grid round far</small><br>
+<img src="code/student_files/report/passports/grid_square.png" width="90%" alt="Texture Passport of grid square"><br><small><strong>(b)</strong> grid square</small><br>
+<img src="code/student_files/report/passports/tile_black.png" width="90%" alt="Texture Passport of tile black"><br><small><strong>(c)</strong> tile black</small><br>
+<img src="code/student_files/report/passports/wood_bad_light.png" width="90%" alt="Texture Passport of wood bad light"><br><small><strong>(d)</strong> wood bad light</small><br>
+<img src="code/student_files/report/passports/tile_granite_tilted.png" width="90%" alt="Texture Passport of tile granite tilted"><br><small><strong>(e)</strong> tile granite tilted</small><br>
 <em><strong>Figure 31.</strong> Texture Passports of the photos judged further from the training examples: (a) grid round far, (b) grid square, (c) tile black, (d) wood bad light, (e) tile granite tilted.</em></p>
 
 **Very far from training examples (Figure 32):**
 
-<p align="center"><img src="student_files/report/passports/tile_noliquid.png" width="90%" alt="Texture Passport of tile noliquid"><br><small><strong>(a)</strong> tile noliquid</small><br>
-<img src="student_files/report/passports/tile_no_colour.png" width="90%" alt="Texture Passport of tile no colour"><br><small><strong>(b)</strong> tile no colour</small><br>
-<img src="student_files/report/passports/tile_colour.png" width="90%" alt="Texture Passport of tile colour"><br><small><strong>(c)</strong> tile colour</small><br>
-<img src="student_files/report/passports/tile_liquid.png" width="90%" alt="Texture Passport of tile liquid"><br><small><strong>(d)</strong> tile liquid</small><br>
-<img src="student_files/report/passports/grid_chair.png" width="90%" alt="Texture Passport of grid chair"><br><small><strong>(e)</strong> grid chair</small><br>
-<img src="student_files/report/passports/tile_grid.png" width="90%" alt="Texture Passport of tile grid"><br><small><strong>(f)</strong> tile grid</small><br>
+<p align="center"><img src="code/student_files/report/passports/tile_noliquid.png" width="90%" alt="Texture Passport of tile noliquid"><br><small><strong>(a)</strong> tile noliquid</small><br>
+<img src="code/student_files/report/passports/tile_no_colour.png" width="90%" alt="Texture Passport of tile no colour"><br><small><strong>(b)</strong> tile no colour</small><br>
+<img src="code/student_files/report/passports/tile_colour.png" width="90%" alt="Texture Passport of tile colour"><br><small><strong>(c)</strong> tile colour</small><br>
+<img src="code/student_files/report/passports/tile_liquid.png" width="90%" alt="Texture Passport of tile liquid"><br><small><strong>(d)</strong> tile liquid</small><br>
+<img src="code/student_files/report/passports/grid_chair.png" width="90%" alt="Texture Passport of grid chair"><br><small><strong>(e)</strong> grid chair</small><br>
+<img src="code/student_files/report/passports/tile_grid.png" width="90%" alt="Texture Passport of tile grid"><br><small><strong>(f)</strong> tile grid</small><br>
 <em><strong>Figure 32.</strong> Texture Passports of the photos judged very far from the training examples: (a) tile noliquid, (b) tile no colour, (c) tile colour, (d) tile liquid, (e) grid chair, (f) tile grid.</em></p>
 
 Overall, the models seem to struggle the most with examples further from the training data, i.e. examples of materials that don't closely match the MVTec style. As soon as the model predicts the wrong class, anomaly detection becomes very difficult, as it uses the wrong normality model. Even on materials very similar to the training data (e.g. the wood_pale example), and using a normality model fitted to the correct material, lighting still greatly impacts the image score and leads to false positive defect masks.
 
 We look at the agreement between human annotations of DTD attributes and model predictions. As I am the sole annotator, a human–human comparison is not possible, so we only compare human and model terms. For a given image, we take its $K$ human annotations and the top-$K$ attributes scored by the model. Figure 33 shows the overlaps. We notice that the biggest agreement is on the marbled attribute (8 photos), meaning the model's notion of this term may closely line up with the human one. Blotchy comes second with 6 agreements. 
 
-<p align="center"><img src="student_files/report/personal_attribute_overlap.png" width="70%" alt="Overlap between the human DTD terms and the model's top-K attributes for each personal photo."><br><em><strong>Figure 33.</strong> Overlap between the human DTD terms and the model's top-K attributes for each personal photo.</em></p>
+<p align="center"><img src="code/student_files/report/personal_attribute_overlap.png" width="70%" alt="Overlap between the human DTD terms and the model's top-K attributes for each personal photo."><br><em><strong>Figure 33.</strong> Overlap between the human DTD terms and the model's top-K attributes for each personal photo.</em></p>
 
 
 Figure 34 plots the material confidence against the anomaly image score. Confidence says nothing about whether the anomaly score can be trusted: every image score above 5 comes from a photo whose material was predicted wrongly, sometimes with a confidence above 0.9 (tile_liquid, tile_grid, tile_no_colour). These high scores therefore mostly measure how different the photo is from the wrong normal model, not real defects. Conversely, the two photos with real holes (tile_white_defect, tile_white_hole) are not separated from the defect-free ones: tile_white_defect, whose material is correct, stays below the threshold.
 
-<p align="center"><img src="student_files/report/personal_conf_vs_score.png" width="50%" alt="Material classifier confidence vs anomaly image score for the personal photos."><br><em><strong>Figure 34.</strong> Material classifier confidence vs anomaly image score for the personal photos.</em></p>
+<p align="center"><img src="code/student_files/report/personal_conf_vs_score.png" width="50%" alt="Material classifier confidence vs anomaly image score for the personal photos."><br><em><strong>Figure 34.</strong> Material classifier confidence vs anomaly image score for the personal photos.</em></p>
 
 Given we are likely working with out of distribution images, it is interesting to see where they lie in a PCA with the training data. This PCA only explains 74% of the variance of the training data, so distances may not be accurate but it does give some intuition over why our images were misclassified. Figure 35 shows this. The red stars represent misclassified personal pictures, whereas the green stars are correctly classified.
 
-<p align="center"><img src="student_files/report/personal_ood_pca.png" width="50%" alt="PCA of the material classifier training descriptors, with the MVTec test images and the personal photos projected onto it."><br><em><strong>Figure 35.</strong> PCA of the material classifier training descriptors, with the MVTec test images and the personal photos projected onto it.</em></p>
+<p align="center"><img src="code/student_files/report/personal_ood_pca.png" width="50%" alt="PCA of the material classifier training descriptors, with the MVTec test images and the personal photos projected onto it."><br><em><strong>Figure 35.</strong> PCA of the material classifier training descriptors, with the MVTec test images and the personal photos projected onto it.</em></p>
 
 We notice that the misclassified images are generally far from the material clusters, and those that are correctly classified are closer to the training data of the correct cluster. Interestingly, the grid_square which was predicted as tile with high confidence does seem to be inside the tile cluster. The two granite photos sit close to each other and between the carpet and tile clusters: tile_granite_tilted is correctly classified as tile but with a confidence of only 0.34, and tile_granite is predicted as carpet with 0.46. Tilting the camera barely moves the photo in this projection, but in the full standardised space the nearest-training-image distance grows from 5.4 (tile_granite, the closest of all personal photos) to 6.7, so the correct label of the tilted photo looks fragile rather than a sign of being close to the tile training data.
 
 Finally, we also analyse if confidence drops with distance to training data. Since logistic regression behaves like a smooth step function, it can produce very high-confidence regions even where there is no training data. Figure 36 shows that this seems to be the case: the model confidently predicts examples which are very far from the training data. On the MVTec test images, confidence only drops slightly with distance (Spearman correlation of −0.21; mean confidence of 0.97 below a distance of 2 and 0.90 beyond the 95th percentile at 7.1), while the error rate rises from 0% to 62%. On the personal photos there is no significant correlation (Spearman 0.28, p = 0.28, n = 17), and if anything it is positive rather than negative. Confidence is therefore a poor warning sign, whereas the distance to the training data itself would be a useful out-of-distribution flag.
 
-<p align="center"><img src="student_files/report/personal_ood_distance.png" width="50%" alt="Material classifier confidence vs distance to the nearest training image, for the MVTec test images and the personal photos."><br><em><strong>Figure 36.</strong> Material classifier confidence vs distance to the nearest training image, for the MVTec test images and the personal photos.</em></p>
+<p align="center"><img src="code/student_files/report/personal_ood_distance.png" width="50%" alt="Material classifier confidence vs distance to the nearest training image, for the MVTec test images and the personal photos."><br><em><strong>Figure 36.</strong> Material classifier confidence vs distance to the nearest training image, for the MVTec test images and the personal photos.</em></p>
 
 **Would more training data help?** Our frozen material classifier was trained on only 20 images, so one might expect a better model to fix the personal photos. We refit it on all 1266 training images (same features and settings) and compare it with the frozen model. The passports still use the frozen model.
 
