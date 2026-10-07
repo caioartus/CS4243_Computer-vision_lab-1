@@ -1,0 +1,18 @@
+path,split,material,defect_type,mask_path,attributes,annotator_1_terms,annotator_2_terms,annotation_completed_before_inference,viewpoint,scale,illumination,exif_removed,notes
+personnal_photos_clean/grid_chair.jpeg,personal,grid,good,,grid;woven;braided,grid;woven;braided,,yes,frontal,medium,diffuse,yes,"Unusual grid, uneven background lighting"
+personnal_photos_clean/grid_round_close.jpeg,personal,grid,good,,grid;porous;pitted,grid;porous;pitted,,yes,frontal,close,diffuse,yes,"Round grid, background variations"
+personnal_photos_clean/grid_round_far.jpeg,personal,grid,good,,grid;porous;pitted,grid;porous;pitted,,yes,oblique,far,diffuse,yes,"Round grid, very uneven background"
+personnal_photos_clean/grid_square.jpeg,personal,grid,good,,grid;woven;bumpy,grid;woven;bumpy,,yes,frontal,medium,diffuse,yes,Change in background at the borders
+personnal_photos_clean/tile_black.jpeg,personal,tile,good,,marbled;blotchy;stained,marbled;blotchy;stained,,yes,frontal,medium,direct,yes,Black tile
+personnal_photos_clean/tile_colour.jpeg,personal,tile,colour,,marbled;banded;striped,marbled;banded;striped,,yes,frontal,close,diffuse,yes,Very little texture
+personnal_photos_clean/tile_granite.jpeg,personal,tile,good,,marbled;blotchy;stained,marbled;blotchy;stained,,yes,frontal,close,diffuse,yes,
+personnal_photos_clean/tile_granite_tilted.jpeg,personal,tile,good,,marbled;blotchy;stained,marbled;blotchy;stained,,yes,oblique,close,diffuse,yes,The angle means the pattern looks different at the top
+personnal_photos_clean/tile_grid.jpeg,personal,tile,good,,marbled;grid;blotchy,marbled;grid;blotchy,,yes,frontal,far,diffuse,yes,Confusion between grid and tile
+personnal_photos_clean/tile_liquid.jpeg,personal,tile,liquid,,marbled;porous;stained;pitted,marbled;porous;stained;pitted,,yes,frontal,close,diffuse,yes,"Different type of tile, liquid adds confusion"
+personnal_photos_clean/tile_no_colour.jpeg,personal,tile,good,,marbled;banded;striped,marbled;banded;striped,,yes,frontal,close,diffuse,yes,Very litle texture
+personnal_photos_clean/tile_noliquid.jpeg,personal,tile,good,,marbled;pitted;porous:stained,marbled;pitted;porous:stained,,yes,frontal,close,diffuse,yes,"Odd tile, colour changed"
+personnal_photos_clean/tile_white_defect.jpeg,personal,tile,hole,,blotchy;marbled;pitted;cracked,blotchy;marbled;pitted;cracked,,yes,frontal,close,diffuse,yes,Big defect
+personnal_photos_clean/tile_white_hole.jpeg,personal,tile,hole,,blotchy;marbled;cracked,blotchy;marbled;cracked,,yes,frontal,close,direct,yes,Reflection
+personnal_photos_clean/wood.jpeg,personal,wood,good,,banded;striped;marbled,banded;striped;marbled,,yes,frontal,close,diffuse,yes,
+personnal_photos_clean/wood_bad_light.jpeg,personal,wood,good,,banded;striped;marbled,banded;striped;marbled,,yes,frontal,close,side-lit,yes,Lighting causing fake edge
+personnal_photos_clean/wood_pale.jpeg,personal,wood,good,,banded;striped;marbled,banded;striped;marbled,,yes,frontal,close,diffuse,yes,
